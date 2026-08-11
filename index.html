@@ -74,6 +74,7 @@ p{max-width:36rem}
 @media(min-width:62rem){
   .hour{grid-template-columns:6rem 1fr 19rem;gap:clamp(1.5rem,3.5vw,3rem)}
   .hour__pic{grid-column:auto}
+  .hour:nth-child(even){grid-template-columns:19rem 6rem 1fr}
   .hour:nth-child(even) .hour__pic{order:-1}
 }
 .hour__t{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--ember);font-style:italic}
