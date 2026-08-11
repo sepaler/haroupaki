@@ -104,6 +104,14 @@ p{max-width:36rem}
 .entry__b{padding-bottom:1.9rem}
 .entry__b p{color:var(--lamp-dim);margin-top:0}
 
+/* reviews */
+.reviews{display:grid;gap:2rem;grid-template-columns:1fr;margin-top:2.5rem}
+@media(min-width:44rem){.reviews{grid-template-columns:1fr 1fr}}
+.review{border-top:1px solid var(--ember);padding-top:1.25rem}
+.review__stars{color:var(--ember);font-size:.85rem;letter-spacing:.2em;margin-bottom:.85rem}
+.review__quote{font-family:var(--display);font-style:italic;font-size:clamp(1.15rem,2vw,1.5rem);line-height:1.4;margin:0 0 1rem;color:var(--lamp)}
+.review__who{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--stone)}
+
 /* form */
 .form{display:grid;gap:1.15rem;max-width:34rem;margin-top:2rem}
 .f{display:grid;gap:.4rem}
@@ -253,6 +261,24 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
   </div>
 </section>
 
+<section class="s wrap rv" style="padding-top:0">
+  <hr class="rule" style="margin-bottom:clamp(3rem,7vw,5rem)">
+  <p class="eyebrow">From our first guests</p>
+  <h2 class="lede">Five stars, in their words.</h2>
+  <div class="reviews">
+    <div class="review">
+      <div class="review__stars">★★★★★</div>
+      <p class="review__quote">"A week spent out of time, between the song of cicadas and the meowing of cats, the mountain wind and the leaves of the large carob tree. We spent a week in paradise."</p>
+      <p class="review__who">Elisabeth · Airbnb</p>
+    </div>
+    <div class="review">
+      <div class="review__stars">★★★★★</div>
+      <p class="review__quote">"Spotlessly clean and thoughtfully designed down to the smallest detail. The perfect place for peace, privacy and relaxing surrounded by nature. Wholeheartedly recommend."</p>
+      <p class="review__who">Lisa · Airbnb</p>
+    </div>
+  </div>
+</section>
+
 <section class="s wrap rv" id="journal" style="padding-top:0">
   <hr class="rule" style="margin-bottom:clamp(3rem,7vw,5rem)">
   <p class="eyebrow">From the hill</p>
@@ -273,13 +299,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
       <p>Questions about the heat, the dog, the walk to the bathroom, the road up, or whether the tomatoes will be ready when you arrive. Ask before you book — we would rather you came knowing exactly what this is.</p>
     </div>
     <div>
-      <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-        <div class="f"><label for="n">Your name</label><input id="n" name="name" type="text" autocomplete="name" required></div>
-        <div class="f"><label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email" required></div>
-        <div class="f"><label for="d">Dates you have in mind</label><input id="d" name="dates" type="text" placeholder="e.g. 12–20 September"></div>
-        <div class="f"><label for="m">Message</label><textarea id="m" name="message" required></textarea></div>
-        <button type="submit">Send message</button>
-      </form>
+      <p style="margin-bottom:1.5rem">The quickest way to reach us is by email. Tell us the dates you have in mind and anything you'd like to know — a real person will reply.</p>
+      <a class="cta" href="mailto:YOUR-EMAIL@example.com?subject=Enquiry%20about%20To%20Charoupaki" style="background:transparent;border:1px solid var(--ember);color:var(--ember)">Email us</a>
     </div>
   </div>
 </section>
@@ -289,7 +310,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
     <p class="eyebrow">Availability</p>
     <h2>Come and switch the noise off.</h2>
     <p>Five nights minimum. Two guests. The sun is already working.</p>
-    <a class="cta" href="#">Check dates on Airbnb</a>
+    <a class="cta" href="https://www.airbnb.com/rooms/1721678687270673868" target="_blank" rel="noopener">See availability &amp; book on Airbnb</a>
   </div>
 </section>
 
