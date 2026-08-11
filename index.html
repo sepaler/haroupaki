@@ -101,17 +101,6 @@ p{max-width:36rem}
 .honest h3{font-size:1.15rem;margin-bottom:.3rem}
 .honest p{margin:0;font-size:.93rem;color:var(--lamp-dim)}
 
-/* journal */
-.entry{border-bottom:1px solid var(--hair)}
-.entry:first-of-type{border-top:1px solid var(--hair)}
-.entry summary{list-style:none;cursor:pointer;padding:1.5rem 0;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline}
-.entry summary::-webkit-details-marker{display:none}
-.entry summary h3{font-size:clamp(1.2rem,2.3vw,1.7rem);font-style:italic}
-.entry summary:hover h3{color:var(--ember)}
-.entry .when{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--stone)}
-.entry__b{padding-bottom:1.9rem}
-.entry__b p{color:var(--lamp-dim);margin-top:0}
-
 /* reviews */
 .reviews{display:grid;gap:2rem;grid-template-columns:1fr;margin-top:2.5rem}
 @media(min-width:44rem){.reviews{grid-template-columns:1fr 1fr}}
@@ -142,6 +131,13 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
 
 .rv{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
 .rv.in{opacity:1;transform:none}
+
+/* lightbox */
+.hour__pic img,.strip img,.frame img{cursor:zoom-in}
+.lb{position:fixed;inset:0;z-index:50;display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;margin:0;background:rgba(21,29,38,.96);padding:var(--pad);cursor:zoom-out}
+.lb.open{display:flex}
+.lb img{max-width:min(92vw,74rem);max-height:82vh;width:auto;height:auto;object-fit:contain;box-shadow:0 0 6rem rgba(0,0,0,.5)}
+.lb figcaption{font-size:.78rem;color:var(--lamp-dim);letter-spacing:.04em;text-align:center;max-width:36rem}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.cta,.strip img{transition:none}}
 
 /* ---------- mobile pass ---------- */
@@ -164,8 +160,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
   .strip{gap:.4rem}
   .book h2{font-size:clamp(2rem,9.5vw,3rem)}
   .cta{padding:1rem 2rem;letter-spacing:.16em}
-  .entry summary{grid-template-columns:1fr;gap:.3rem;padding:1.2rem 0}
-  .entry summary h3{font-size:1.15rem}
   footer .wrap{flex-direction:column}
 }
 </style>
@@ -287,17 +281,6 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
   </div>
 </section>
 
-<section class="s wrap rv" id="journal" style="padding-top:0">
-  <hr class="rule" style="margin-bottom:clamp(3rem,7vw,5rem)">
-  <p class="eyebrow">From the hill</p>
-  <h2 class="lede">Notes, in no particular hurry.</h2>
-  <div style="margin-top:2.5rem">
-    <details class="entry"><summary><h3>The year the carob gave too much</h3><span class="when">October</span></summary><div class="entry__b"><p>Replace this with your own writing. A short post every few weeks is plenty: what is ripe, what the weather is doing, a taverna worth the drive. Guests read these before booking, and search engines read them all year.</p><p>To add a post, copy this block in the HTML and change the title, the month and the words.</p></div></details>
-    <details class="entry"><summary><h3>Where we eat when we cannot be bothered to cook</h3><span class="when">August</span></summary><div class="entry__b"><p>Replace this with your own writing. Local recommendations make good posts — useful, honest, and nobody else can write them.</p></div></details>
-    <details class="entry"><summary><h3>Learning to live on what the sun gives you</h3><span class="when">June</span></summary><div class="entry__b"><p>Replace this with your own writing. The off-grid story is the one people share.</p></div></details>
-  </div>
-</section>
-
 <section class="s wrap rv" id="contact" style="padding-top:0">
   <hr class="rule" style="margin-bottom:clamp(3rem,7vw,5rem)">
   <div class="two">
@@ -330,6 +313,18 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-be
   if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return}
   var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.06});
   els.forEach(function(e){io.observe(e)});
+})();
+(function(){
+  var lb=document.createElement('figure');lb.className='lb';lb.setAttribute('role','dialog');lb.setAttribute('aria-modal','true');
+  lb.innerHTML='<img alt=""><figcaption></figcaption>';
+  document.body.appendChild(lb);
+  var big=lb.querySelector('img'),cap=lb.querySelector('figcaption');
+  document.querySelectorAll('.hour__pic img,.strip img,.frame img').forEach(function(img){
+    img.addEventListener('click',function(){big.src=img.src;big.alt=img.alt;cap.textContent=img.alt;lb.classList.add('open')});
+  });
+  function close(){lb.classList.remove('open')}
+  lb.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close()});
 })();
 </script>
 </body>
