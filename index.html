@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Το Χαρουπάκι — a stone cottage that runs on sunlight, Crete</title>
+<meta name="description" content="A hundred-year-old off-grid stone cottage above Megala Chorafia, Crete. Outdoor kitchen, garden, carob shade, lantern light. Sleeps two.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#151D26;      /* blue hour over the courtyard */
+  --dusk:#1F2A33;
+  --lamp:#F2E7D3;       /* what the lantern actually looks like */
+  --lamp-dim:rgba(242,231,211,.62);
+  --ember:#C2793B;
+  --stone:#7E8A90;
+  --hair:rgba(242,231,211,.16);
+
+  --display:"Cormorant Garamond",Georgia,serif;
+  --body:"Jost",system-ui,sans-serif;
+  --pad:clamp(1.25rem,5vw,4.5rem);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--night);color:var(--lamp);
+  font-family:var(--body);font-weight:300;
+  font-size:clamp(1rem,.95rem + .2vw,1.08rem);line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;width:100%;height:100%;object-fit:cover}
+h1,h2,h3{font-family:var(--display);font-weight:300;line-height:1.06;margin:0;letter-spacing:.005em}
+.wrap{max-width:74rem;margin:0 auto;padding-inline:var(--pad)}
+.eyebrow{font-size:.66rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--ember);margin:0 0 1.75rem}
+.rule{height:1px;background:var(--hair);border:0;margin:0}
+p{max-width:36rem}
+
+/* hero */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:grid;place-items:center;text-align:center;overflow:hidden}
+.hero__img{position:absolute;inset:0}
+.hero__img::after{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 60%,rgba(21,29,38,.28) 0%,rgba(21,29,38,.72) 55%,rgba(21,29,38,.94) 100%)}
+.hero__inner{position:relative;padding:var(--pad)}
+.hero h1{font-size:clamp(3.4rem,13vw,10rem);line-height:.9;letter-spacing:-.01em}
+.hero h1 i{display:block;font-family:var(--body);font-style:normal;font-size:clamp(.66rem,1.6vw,.8rem);font-weight:400;letter-spacing:.42em;text-transform:uppercase;color:var(--ember);margin-bottom:1.6rem}
+.hero p{margin:1.75rem auto 0;color:var(--lamp-dim);max-width:30rem}
+.scrollcue{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;color:var(--lamp-dim)}
+
+/* section */
+.s{padding-block:clamp(4rem,10vw,8rem)}
+.lede{font-size:clamp(1.9rem,4.6vw,3.4rem);line-height:1.12;max-width:20ch;margin:0 0 2rem;font-style:italic;font-weight:300}
+.two{display:grid;gap:clamp(2rem,5vw,4rem);grid-template-columns:1fr}
+@media(min-width:52rem){.two{grid-template-columns:1fr 1fr;align-items:center}}
+.frame{aspect-ratio:4/5;overflow:hidden;background:var(--dusk)}
+
+/* the day — signature */
+.day{border-top:1px solid var(--hair)}
+.hour{
+  display:grid;grid-template-columns:1fr;gap:1.25rem;
+  padding-block:clamp(2rem,5vw,3.5rem);
+  border-bottom:1px solid var(--hair);
+  align-items:center;
+}
+@media(min-width:52rem){.hour{grid-template-columns:5rem 1fr;gap:1.5rem 2.5rem}.hour__pic{grid-column:2}}
+@media(min-width:62rem){
+  .hour{grid-template-columns:6rem 1fr 19rem;gap:clamp(1.5rem,3.5vw,3rem)}
+  .hour__pic{grid-column:auto}
+  .hour:nth-child(even) .hour__pic{order:-1}
+}
+.hour__t{font-family:var(--display);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--ember);font-style:italic}
+.hour__x h3{font-size:clamp(1.25rem,2.4vw,1.75rem);margin-bottom:.5rem}
+.hour__x p{color:var(--lamp-dim);margin:0;font-size:.97rem}
+.hour__pic{aspect-ratio:3/2;overflow:hidden;background:var(--dusk)}
+
+/* strip */
+.strip{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem}
+@media(min-width:52rem){.strip{grid-template-columns:repeat(4,1fr);gap:.7rem}}
+.strip div{aspect-ratio:1;overflow:hidden;background:var(--dusk)}
+.strip img{transition:opacity .6s ease}
+.strip div:hover img{opacity:.82}
+
+/* facts */
+.facts{display:grid;grid-template-columns:1fr;gap:0;margin-top:2.5rem;max-width:44rem}
+.facts div{display:grid;grid-template-columns:1fr auto;gap:1.5rem;padding:.9rem 0;border-bottom:1px solid var(--hair);align-items:baseline}
+.facts dt,.facts span:first-child{color:var(--lamp-dim);font-size:.94rem}
+.facts b{font-family:var(--display);font-weight:400;font-size:1.15rem}
+
+/* honest */
+.honest{display:grid;grid-template-columns:1fr;gap:1.75rem 3rem;margin-top:2.5rem}
+@media(min-width:44rem){.honest{grid-template-columns:1fr 1fr}}
+.honest div{padding-left:1.1rem;border-left:1px solid var(--ember)}
+.honest h3{font-size:1.15rem;margin-bottom:.3rem}
+.honest p{margin:0;font-size:.93rem;color:var(--lamp-dim)}
+
+/* journal */
+.entry{border-bottom:1px solid var(--hair)}
+.entry:first-of-type{border-top:1px solid var(--hair)}
+.entry summary{list-style:none;cursor:pointer;padding:1.5rem 0;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:baseline}
+.entry summary::-webkit-details-marker{display:none}
+.entry summary h3{font-size:clamp(1.2rem,2.3vw,1.7rem);font-style:italic}
+.entry summary:hover h3{color:var(--ember)}
+.entry .when{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--stone)}
+.entry__b{padding-bottom:1.9rem}
+.entry__b p{color:var(--lamp-dim);margin-top:0}
+
+/* form */
+.form{display:grid;gap:1.15rem;max-width:34rem;margin-top:2rem}
+.f{display:grid;gap:.4rem}
+.f label{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--stone)}
+.f input,.f textarea{font:inherit;color:var(--lamp);background:transparent;border:0;border-bottom:1px solid var(--hair);padding:.65rem 0;border-radius:0}
+.f textarea{resize:vertical;min-height:6.5rem}
+.f input:focus,.f textarea:focus{outline:0;border-bottom-color:var(--ember)}
+.form button{justify-self:start;margin-top:.6rem;cursor:pointer;font:inherit;font-weight:500;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase;padding:1rem 2.4rem;border:1px solid var(--ember);background:transparent;color:var(--ember);border-radius:0;transition:background .3s,color .3s}
+.form button:hover{background:var(--ember);color:var(--night)}
+
+/* book */
+.book{text-align:center;background:var(--dusk)}
+.book h2{font-size:clamp(2.4rem,7vw,5rem);font-style:italic}
+.book p{margin:1.5rem auto 2.75rem;color:var(--lamp-dim)}
+.cta{display:inline-block;padding:1.1rem 3rem;background:var(--ember);color:var(--night);text-decoration:none;font-weight:500;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;transition:box-shadow .4s,transform .4s}
+.cta:hover,.cta:focus-visible{box-shadow:0 0 4rem rgba(194,121,59,.45);transform:translateY(-2px)}
+footer{padding-block:2.5rem;font-size:.78rem;color:var(--stone)}
+footer .wrap{display:flex;flex-wrap:wrap;gap:.6rem 2rem;justify-content:space-between}
+:focus-visible{outline:1px solid var(--ember);outline-offset:4px}
+
+.rv{opacity:0;transform:translateY(16px);transition:opacity 1s ease,transform 1s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv{opacity:1;transform:none;transition:none}.cta,.strip img{transition:none}}
+
+/* ---------- mobile pass ---------- */
+@media(max-width:51.99rem){
+  body{overflow-x:hidden}
+  .hero{min-height:90svh}
+  .hero h1{font-size:clamp(2.5rem,10.5vw,4rem);line-height:.96}
+  .hero h1 i{font-size:.58rem;letter-spacing:.28em;margin-bottom:1.1rem}
+  .hero p{font-size:.97rem;margin-top:1.4rem}
+  .lede{font-size:clamp(1.55rem,6.6vw,2.2rem);max-width:none;margin-bottom:1.5rem}
+  .eyebrow{letter-spacing:.22em;margin-bottom:1.25rem}
+  .hour{padding-block:1.9rem;gap:1rem}
+  .hour__t{font-size:1.4rem}
+  .hour__x h3{font-size:1.15rem}
+  .hour__x p{font-size:.93rem}
+  .hour__pic{aspect-ratio:16/10}
+  .frame{aspect-ratio:4/3}
+  .facts div{gap:1rem;padding:.8rem 0}
+  .facts b{font-size:1.02rem}
+  .strip{gap:.4rem}
+  .book h2{font-size:clamp(2rem,9.5vw,3rem)}
+  .cta{padding:1rem 2rem;letter-spacing:.16em}
+  .entry summary{grid-template-columns:1fr;gap:.3rem;padding:1.2rem 0}
+  .entry summary h3{font-size:1.15rem}
+  footer .wrap{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero__img"><img src="photos/1000069730.jpg" alt="The courtyard at blue hour, the old carob tree lit from below"></div>
+  <div class="hero__inner">
+    <h1><i>Το Χαρουπάκι · Crete</i>The lights here<br>are lanterns.</h1>
+    <p>A hundred-year-old stone cottage above Megala Chorafia, entirely off the grid. It runs on sunlight. It sleeps two. The tree came first.</p>
+  </div>
+  <span class="scrollcue">Scroll</span>
+</header>
+
+<section class="s wrap rv">
+  <p class="eyebrow">What this is</p>
+  <h2 class="lede">Part of our grandmother Evanthia's house, still standing, still cool at noon.</h2>
+  <p>No pool. No air conditioning. No washing machine. What there is instead: walls thick enough to keep the summer outside, a carob tree that has shaded this courtyard for a century, three beds of vegetables you are welcome to raid, and Wi-Fi — so you can be off-grid without falling off the map.</p>
+</section>
+
+<!-- SIGNATURE: a day here -->
+<section class="s wrap rv" style="padding-top:0">
+  <hr class="rule" style="margin-bottom:clamp(3rem,7vw,5rem)">
+  <p class="eyebrow">One day, roughly</p>
+  <h2 class="lede">Nothing is scheduled. It still goes like this.</h2>
+
+  <div class="day" style="margin-top:2.5rem">
+    <article class="hour">
+      <div class="hour__t">07:40</div>
+      <div class="hour__x"><h3>The door opens onto the courtyard</h3><p>You sleep well here because it is dark and there is no machine running anywhere. The light arrives before the heat does.</p></div>
+      <div class="hour__pic"><img src="photos/1000069722.jpg" alt="Morning light through the open door of the stone room" loading="lazy"></div>
+    </article>
+    <article class="hour">
+      <div class="hour__t">09:15</div>
+      <div class="hour__x"><h3>Coffee, under the tree, for a long time</h3><p>The carob throws enough shade for the whole table. Most guests do not get further than this until eleven.</p></div>
+      <div class="hour__pic"><img src="photos/1000069760.jpg" alt="A table laid under the carob tree with the mountains beyond" loading="lazy"></div>
+    </article>
+    <article class="hour">
+      <div class="hour__t">11:00</div>
+      <div class="hour__x"><h3>Down the gravel path, to see what is ready</h3><p>Tomatoes, peppers, aubergines, courgettes. Rosemary, thyme and oregano all year. Prickly pears and grapes if you come late in the season.</p></div>
+      <div class="hour__pic"><img src="photos/1000069758.jpg" alt="The gravel path between the vegetable beds toward the White Mountains" loading="lazy"></div>
+    </article>
+    <article class="hour">
+      <div class="hour__t">15:30</div>
+      <div class="hour__x"><h3>The hottest part of the day, spent horizontally</h3><p>Two chairs against the old wall. Aptera is five minutes away when you are ready to move; the sea is twenty.</p></div>
+      <div class="hour__pic"><img src="photos/1000069742.jpg" alt="Two deck chairs in the shade against the dry-stone wall" loading="lazy"></div>
+    </article>
+    <article class="hour">
+      <div class="hour__t">19:45</div>
+      <div class="hour__x"><h3>Cooking outside, because the kitchen is outside</h3><p>A gas burner, a built-in stone barbecue, a marble sink and a long counter facing the White Mountains.</p></div>
+      <div class="hour__pic"><img src="photos/1000069776.jpg" alt="The outdoor kitchen with its terracotta herringbone wall lit by copper lamps" loading="lazy"></div>
+    </article>
+    <article class="hour">
+      <div class="hour__t">23:10</div>
+      <div class="hour__x"><h3>Lanterns, and then the walk to bed</h3><p>The bathroom is its own small building a few steps across the courtyard. You go outside to reach it, under whatever the sky is doing. People end up liking that part.</p></div>
+      <div class="hour__pic"><img src="photos/1000069718.jpg" alt="The bed with its red woven headboard between two lit lanterns" loading="lazy"></div>
+    </article>
+  </div>
+</section>
+
+<section class="s wrap rv" style="padding-top:0">
+  <div class="strip">
+    <div><img src="photos/1000069772.jpg" alt="The stone courtyard beneath the twin trunks of the carob" loading="lazy"></div>
+    <div><img src="photos/1000069708.jpg" alt="The bathroom, with its zinc basin and patterned tile" loading="lazy"></div>
+    <div><img src="photos/1000069754.jpg" alt="Peppers on the built-in barbecue" loading="lazy"></div>
+    <div><img src="photos/1000069750.jpg" alt="The wooden door open onto the bedroom" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="s wrap rv" style="padding-top:0">
+  <hr class="rule" style="margin-bottom:clamp(3rem,7vw,5rem)">
+  <div class="two">
+    <div>
+      <p class="eyebrow">The house, in short</p>
+      <h2 class="lede">Small, honest numbers.</h2>
+      <div class="facts">
+        <div><span>The room</span><b>25 m²</b></div>
+        <div><span>The bathroom, separate building</span><b>5 m²</b></div>
+        <div><span>Guests</span><b>Two</b></div>
+        <div><span>Power</span><b>Solar only</b></div>
+        <div><span>Minimum stay</span><b>5 nights</b></div>
+        <div><span>Parking</span><b>Private, on site</b></div>
+        <div><span>Dogs</span><b>Yes, please</b></div>
+        <div><span>Chania</span><b>20 min</b></div>
+      </div>
+    </div>
+    <div class="frame"><img src="photos/1000069720.jpg" alt="The bedroom seen head-on, lantern-lit" loading="lazy"></div>
+  </div>
+</section>
+
+<section class="s wrap rv" style="padding-top:0">
+  <hr class="rule" style="margin-bottom:clamp(3rem,7vw,5rem)">
+  <p class="eyebrow">Before you book</p>
+  <h2 class="lede">Better said now than discovered later.</h2>
+  <div class="honest">
+    <div><h3>No air conditioning</h3><p>Thick stone, deep shade, fans. Cool by day and cooler at night, but not a chilled box.</p></div>
+    <div><h3>The bathroom is outside</h3><p>Private and yours alone, a few steps across the courtyard. You do step out to reach it.</p></div>
+    <div><h3>The kitchen is outside too</h3><p>Covered and fully equipped, but open to the air. Bring a jumper for autumn dinners.</p></div>
+    <div><h3>Solar means limits</h3><p>Lights, fridge, Wi-Fi, charging: yes. Anything with a heating element: no.</p></div>
+  </div>
+</section>
+
+<section class="s wrap rv" id="journal" style="padding-top:0">
+  <hr class="rule" style="margin-bottom:clamp(3rem,7vw,5rem)">
+  <p class="eyebrow">From the hill</p>
+  <h2 class="lede">Notes, in no particular hurry.</h2>
+  <div style="margin-top:2.5rem">
+    <details class="entry"><summary><h3>The year the carob gave too much</h3><span class="when">October</span></summary><div class="entry__b"><p>Replace this with your own writing. A short post every few weeks is plenty: what is ripe, what the weather is doing, a taverna worth the drive. Guests read these before booking, and search engines read them all year.</p><p>To add a post, copy this block in the HTML and change the title, the month and the words.</p></div></details>
+    <details class="entry"><summary><h3>Where we eat when we cannot be bothered to cook</h3><span class="when">August</span></summary><div class="entry__b"><p>Replace this with your own writing. Local recommendations make good posts — useful, honest, and nobody else can write them.</p></div></details>
+    <details class="entry"><summary><h3>Learning to live on what the sun gives you</h3><span class="when">June</span></summary><div class="entry__b"><p>Replace this with your own writing. The off-grid story is the one people share.</p></div></details>
+  </div>
+</section>
+
+<section class="s wrap rv" id="contact" style="padding-top:0">
+  <hr class="rule" style="margin-bottom:clamp(3rem,7vw,5rem)">
+  <div class="two">
+    <div>
+      <p class="eyebrow">Ask us anything</p>
+      <h2 class="lede">A real person answers.</h2>
+      <p>Questions about the heat, the dog, the walk to the bathroom, the road up, or whether the tomatoes will be ready when you arrive. Ask before you book — we would rather you came knowing exactly what this is.</p>
+    </div>
+    <div>
+      <form class="form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="f"><label for="n">Your name</label><input id="n" name="name" type="text" autocomplete="name" required></div>
+        <div class="f"><label for="e">Email</label><input id="e" name="email" type="email" autocomplete="email" required></div>
+        <div class="f"><label for="d">Dates you have in mind</label><input id="d" name="dates" type="text" placeholder="e.g. 12–20 September"></div>
+        <div class="f"><label for="m">Message</label><textarea id="m" name="message" required></textarea></div>
+        <button type="submit">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="s book" id="book">
+  <div class="wrap rv">
+    <p class="eyebrow">Availability</p>
+    <h2>Come and switch the noise off.</h2>
+    <p>Five nights minimum. Two guests. The sun is already working.</p>
+    <a class="cta" href="#">Check dates on Airbnb</a>
+  </div>
+</section>
+
+<footer><div class="wrap"><span>Το Χαρουπάκι — Megala Chorafia, Apokoronas, Crete</span><span>Reg. no. (AMA) — add yours here</span></div></footer>
+
+<script>
+(function(){
+  var els=document.querySelectorAll('.rv');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){els.forEach(function(e){e.classList.add('in')});return}
+  var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.06});
+  els.forEach(function(e){io.observe(e)});
+})();
+</script>
+</body>
+</html>
